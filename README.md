@@ -127,10 +127,12 @@ This project is licensed under the MIT License.
 
 ## 👤 Author
 
-**SMKehTDOG2335**
+**Steve Mathews Korah**
 
 - GitHub: [@SMKehTDOG2335](https://github.com/SMKehTDOG2335)
 
 ---
+
+© 2026 Steve Mathews Korah. All rights reserved.
 
 ⭐ Star this repo if you found it helpful!

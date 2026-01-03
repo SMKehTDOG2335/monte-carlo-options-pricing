@@ -1,3 +1,14 @@
+"""
+Monte Carlo Options Pricing - Streamlit Web Application
+=========================================================
+Author: Steve Mathews Korah
+GitHub: https://github.com/SMKehTDOG2335
+Copyright (c) 2026 Steve Mathews Korah. All rights reserved.
+
+A sophisticated options pricing tool using Monte Carlo simulation methods.
+Supports both American (Longstaff-Schwartz) and European options pricing.
+"""
+
 import streamlit as st
 import numpy as np
 import yfinance as yf

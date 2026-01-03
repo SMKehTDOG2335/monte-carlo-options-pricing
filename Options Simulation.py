@@ -1,3 +1,14 @@
+"""
+Monte Carlo Options Pricing Simulation
+========================================
+Author: Steve Mathews Korah
+GitHub: https://github.com/SMKehTDOG2335
+Copyright (c) 2026 Steve Mathews Korah. All rights reserved.
+
+This tool uses Monte Carlo simulation to price American and European options
+with real-time market data from Yahoo Finance.
+"""
+
 import numpy as np
 import yfinance as yf
 import matplotlib.pyplot as plt
