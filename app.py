@@ -12,7 +12,9 @@ Supports both American (Longstaff-Schwartz) and European options pricing.
 import streamlit as st
 import numpy as np
 import yfinance as yf
+import pandas as pd
 import matplotlib.pyplot as plt
+import requests
 from datetime import datetime, timedelta
 
 # -----------------------------
@@ -67,16 +69,40 @@ st.markdown("""
 # -----------------------------
 @st.cache_data(ttl=300)
 def get_stock_data(ticker):
-    data = yf.download(ticker, period="1y", interval="1d", progress=False)
-    if data.empty:
+    # Create a session with a browser-like User-Agent to avoid being blocked by Yahoo Finance
+    session = requests.Session()
+    session.headers.update({
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    })
+    
+    try:
+        # Use Ticker.history for potentially better reliability in cloud environments
+        stock = yf.Ticker(ticker, session=session)
+        data = stock.history(period="1y")
+        
+        if data.empty:
+            # Fallback to yf.download if history fails
+            data = yf.download(ticker, period="1y", interval="1d", progress=False, session=session)
+            
+        if data.empty:
+            return None, None
+        
+        # Extract closing prices, handling potential multi-index
+        if "Close" in data.columns:
+            prices = data["Close"]
+        else:
+            # Some versions of yfinance return different structures
+            return None, None
+            
+        S0 = float(prices.iloc[-1])
+        log_returns = np.log(prices / prices.shift(1)).dropna()
+        sigma = float(log_returns.std() * np.sqrt(252))
+        
+        return S0, sigma
+    except Exception as e:
+        # Log error to console for debugging in Streamlit Cloud logs
+        print(f"DEBUG: Error fetching {ticker}: {str(e)}")
         return None, None
-    
-    prices = data["Close"]
-    S0 = float(prices.iloc[-1])
-    log_returns = np.log(prices / prices.shift(1)).dropna()
-    sigma = float(log_returns.std() * np.sqrt(252))
-    
-    return S0, sigma
 
 # -----------------------------
 # European Option (MC)
