@@ -19,6 +19,7 @@ A sophisticated options pricing tool using Monte Carlo simulation methods. Suppo
 ## 🖥️ Screenshots
 
 The app features a premium gradient UI with:
+
 - Interactive sidebar for configuration
 - Real-time stock data display
 - Monte Carlo simulation visualization
@@ -44,6 +45,18 @@ streamlit run app.py
 python "Options Simulation.py"
 ```
 
+## 🌐 Live Deployment
+
+You can host this app for free on **Streamlit Community Cloud**:
+
+1. **Push your code** to a GitHub repository.
+2. **Visit [share.streamlit.io](https://share.streamlit.io)** and log in with GitHub.
+3. **Click "New app"** and select this repository and `app.py` as the entry point.
+4. **Deploy!** You will get a secure public URL (HTTPS).
+
+> [!TIP]
+> Once deployed, you can share the link on your LinkedIn profile or posts for others to try the app!
+
 ## 📊 How It Works
 
 ### Monte Carlo Simulation
@@ -55,6 +68,7 @@ S(T) = S(0) × exp[(r - σ²/2)T + σ√T × Z]
 ```
 
 Where:
+
 - `S(0)` = Current stock price
 - `r` = Risk-free rate
 - `σ` = Volatility (annualized)
@@ -64,6 +78,7 @@ Where:
 ### Longstaff-Schwartz Method (American Options)
 
 For American options, the LSM algorithm determines optimal early exercise by:
+
 1. Simulating price paths
 2. Working backwards from expiry
 3. Using regression to estimate continuation value
@@ -81,6 +96,7 @@ For American options, the LSM algorithm determines optimal early exercise by:
 | Simulations | Number of Monte Carlo paths | 50,000 |
 
 ### Risk-Free Rates
+
 - **US**: 5% (Fed rate)
 - **India (NSE/BSE)**: 6% (RBI rate)
 
@@ -117,6 +133,7 @@ Option Price for AAPL: 23.8093
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
+
 - Report bugs
 - Suggest features
 - Submit pull requests
