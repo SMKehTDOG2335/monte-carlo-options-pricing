@@ -147,6 +147,7 @@ This project is licensed under the MIT License.
 **Steve Mathews Korah**
 
 - GitHub: [@SMKehTDOG2335](https://github.com/SMKehTDOG2335)
+- Linedin: [@SteveMathewsKorah](https://www.linkedin.com/in/steve-mathews-korah-229632209?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
 
 ---
 
